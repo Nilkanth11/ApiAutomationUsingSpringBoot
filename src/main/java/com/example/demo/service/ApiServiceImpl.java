@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.config.ApiProperties;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

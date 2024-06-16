@@ -22,6 +22,7 @@ public class ApiServiceIntegrationTest {
 	private ApiService apiService;
 
 	@Test
+	@ExtendWith(Service1HealthCondition.class)
 	public void testCallApiWithPayload() {
 		String apiName = "service1";
 
@@ -46,6 +47,7 @@ public class ApiServiceIntegrationTest {
 
 	}
 	@Test
+	@ExtendWith(Service2HealthCondition.class)
 	public void testWithImage() {
 		String apiName = "service2";
 
