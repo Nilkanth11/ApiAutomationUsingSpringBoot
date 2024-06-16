@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.pojo.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -13,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@Execution(ExecutionMode.CONCURRENT)
 public class ApiServiceIntegrationTest {
 
 	@Autowired
@@ -36,7 +39,7 @@ public class ApiServiceIntegrationTest {
 		payload.setTopping(Arrays.asList(new Topping("5001", "None"), new Topping("5002", "Glazed"), new Topping("5005", "Sugar"), new Topping("5007", "Powdered Sugar"), new Topping("5006", "Chocolate with Sprinkles"), new Topping("5003", "Chocolate"), new Topping("5004", "Maple")));
 
 		// Call the API with the Payload
-		String response = apiService.callApi(apiName, payload);
+		String response = apiService.callApi(apiName, payload,apiName);
 
 		// Assert the response
 		assertNotNull(response);
@@ -65,7 +68,7 @@ public class ApiServiceIntegrationTest {
 		main.setImage(image);
 		main.setThumbnail(thumbnail);
 
-		String response = apiService.callApi(apiName,main);
+		String response = apiService.callApi(apiName,main,apiName);
 
 		// Assert the response
 		assertNotNull(response);
