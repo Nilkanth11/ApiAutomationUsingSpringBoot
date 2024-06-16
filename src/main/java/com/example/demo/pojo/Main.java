@@ -7,7 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Batter {
-	private String id;
-	private String type;
+public class Main {
+	public String id;
+	public String type;
+	public String name;
+	public Image image;
+	public Thumbnail thumbnail;
 }

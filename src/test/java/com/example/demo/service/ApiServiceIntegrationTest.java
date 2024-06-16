@@ -42,22 +42,34 @@ public class ApiServiceIntegrationTest {
 		assertNotNull(response);
 
 	}
+	@Test
+	public void testWithImage() {
+		String apiName = "service2";
 
-//		@Test
-//		public void testCallService2() {
-//			String apiName = "service2";
-//
-//			// Assume Service2Payload is another payload POJO
-//			Service2Payload payload = new Service2Payload();
-//			payload.setKeyA("valueA");
-//			payload.setKeyB("valueB");
-//
-//			String response = apiService.callApi(apiName, payload);
-//
-//			assertNotNull(response);
-//			// Optionally, assert more details about the response if needed
-//			System.out.println(apiName + " Response: " + response);
-//		}
+		// Create the payload
+		Main main = new Main();
+		main.setId("0001");
+		main.setType("Laptop");
+		main.setName("SecondService");
 
-	// Repeat similar tests for other APIs...
+		Image image = new Image();
+		image.setHeight(200);
+		image.setWidth(200);
+		image.setUrl("myURL");
+
+		Thumbnail thumbnail = new Thumbnail();
+		thumbnail.setHeight(200);
+		thumbnail.setUrl("myThumbnailUrl");
+		thumbnail.setWidth(200);
+
+		main.setImage(image);
+		main.setThumbnail(thumbnail);
+
+		String response = apiService.callApi(apiName,main);
+
+		// Assert the response
+		assertNotNull(response);
+
+	}
+
 }
